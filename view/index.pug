@@ -1,0 +1,23 @@
+doctype html
+html
+    head
+        title Sample Full-Stack Project
+        link(rel='stylesheet', href='style.css')
+        script(src='vue.js')
+    body
+        #app
+            #search
+                i(@click="results=[];searchText=''") {{(searchText == '')?'search':'close'}}
+                input(placeholder='search buyer names' @input='search()' v-model='searchText')
+            #results(v-show='results.length > 0')
+                .buyer.header
+                    span.id ID
+                    span.name Buyer Name
+                    span.budget Budget
+                .buyer(v-for='buyer in results')
+                    span.id {{buyer.ID}}
+                    span.name {{buyer.Name}}
+                    span.budget ${{buyer.Budget}}
+        script
+            include controller.js
+            include view.js
